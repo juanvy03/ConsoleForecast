@@ -10,9 +10,9 @@
 
 ######
 ## Usage:
-##      python forecast city
+##      python forecast.py city
 ##      - or -
-##      python forecast
+##      python forecast.py
 ##          -> city
 ######
 import urllib3
@@ -20,7 +20,6 @@ import json
 import certifi
 import sys
 
-baseurl = "https://query.yahooapis.com/v1/public/yql?q="
 
 ## Starting
 message = """#########
@@ -33,14 +32,14 @@ message = """#########
 """
 print(message)
 
+baseurl = "https://query.yahooapis.com/v1/public/yql?q="
+
 if len(sys.argv) < 2:
     location = input('Write location to check Forecast: ')
     queryjoin = "select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text='{}')".format(location)
 else:
     queryjoin = "select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text='{}')".format(sys.argv[1])
 
-
-# Joining queries
 
 
 # Joining strings
